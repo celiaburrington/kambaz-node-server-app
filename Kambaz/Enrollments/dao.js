@@ -14,3 +14,6 @@ export function enrollUserInCourse(user, course) {
 export function unenrollUserFromCourse(user, course) {
  return model.deleteOne({ user, course });
 }
+export async function findAllEnrollments(userId) {
+  return await model.find({ user: userId });
+}

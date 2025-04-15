@@ -124,6 +124,12 @@ export default function UserRoutes(app) {
     res.send(status);
   };
 
+  const findAllEnrollments = async (req, res) => {
+    const enrollements = await enrollmentsDao.findAllEnrollments(req.params.uid);
+    res.json(enrollements);
+  };
+
+  app.get("/api/users/:uid/enrollments", findAllEnrollments);
   app.post("/api/users/:uid/courses/:cid", enrollUserInCourse);
   app.delete("/api/users/:uid/courses/:cid", unenrollUserFromCourse);
   app.get("/api/users/:uid/courses", findCoursesForUser);
